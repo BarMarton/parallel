@@ -1,0 +1,3 @@
+/home/marci/CLionProjects/pGyak_2_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/marci/CLionProjects/pGyak_2_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/marci/CLionProjects/pGyak_2_2/cmake-build-debug/CMakeFiles/pGyak_2_2.dir
