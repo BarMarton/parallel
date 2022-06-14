@@ -1,0 +1,3 @@
+/home/marci/CLionProjects/C_prime_paralell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/marci/CLionProjects/C_prime_paralell/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/marci/CLionProjects/C_prime_paralell/cmake-build-debug/CMakeFiles/C_prime_paralell.dir
