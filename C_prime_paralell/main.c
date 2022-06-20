@@ -3,20 +3,13 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <pthread.h>
-#define THREADS 16
+#include "prime.h"
 //Prime Test multithreaded
-
-void *primeSubroutine(void *arg);
-bool isPrime(int n);
-
-typedef struct args
-{
-    int start;
-    int stop;
-} args;
 
 int main()
 {
+    int THREADS;
+    for(THREADS = 2; THREADS <= 16; THREADS++){
     int limit = 200000;
     pthread_t threads[THREADS];
     int step = limit / THREADS;
@@ -42,37 +35,11 @@ int main()
 
     gettimeofday(&t2, NULL);
     timersub(&t2, &t1, &dt);
+        printf("Threads: %d\n", THREADS);
     printf("%ld.%06ld seconds\n", dt.tv_sec, dt.tv_usec);
     printf("number of primes: %d\n", finalCounter);
+    }
+
     return 0;
 }
 
-void *primeSubroutine(void *arg)
-{
-    args *n = (args *)arg;
-    int *counter = malloc(sizeof(int));
-    *counter = 0;
-    for(int i = n->start; i < n->stop; i++)
-    {
-        if(isPrime(i)) {
-            (*counter)++;
-            printf("%d\n", i);
-        }
-    }
-    free(n);
-    return (void *)counter;
-}
-
-bool isPrime(int n)
-{
-    int a = 2;
-    bool z = true;
-    while (a <= n/2){
-        if(n % a ==0){
-            z = false;
-            break;
-        }
-        a++;
-    }
-    return z;
-}

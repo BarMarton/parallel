@@ -9,18 +9,21 @@ int parallelPart(char emote[]);
 
 int main() {
     char emote1[] = "PagMan";
-    struct timeval t1, t2, dt;
+    int i;
+    for (i = 2; i<=8; i++){
+        struct timeval t1, t2, dt;
+        gettimeofday(&t1, NULL);
+        omp_set_num_threads(i);
+        int counter = parallelPart(emote1);
 
-    gettimeofday(&t1, NULL);
+        gettimeofday(&t2, NULL);
+        timersub(&t2, &t1, &dt);
 
-    int counter = parallelPart(emote1);
-
-    gettimeofday(&t2, NULL);
-    timersub(&t2, &t1, &dt);
-
-    printf(emote1);
-    printf(" count: %d\n", counter);
-    printf("%ld.%06ld seconds\n", dt.tv_sec, dt.tv_usec);
+        printf(emote1);
+        printf(" count: %d\n", counter);
+        printf("Threads: %d\n", i);
+        printf("%ld.%06ld seconds\n", dt.tv_sec, dt.tv_usec);
+    }
 
     return 0;
 }
